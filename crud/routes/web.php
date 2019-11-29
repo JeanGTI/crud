@@ -14,4 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('autores'.'autoresController');
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('autores','AutoresController@index');
+Route::get('autores/novo','AutoresController@novo');
+Route::get('autores/{autor}/editar','AutoresController@editar');
+Route::post('autores/salvar','AutoresController@salvar');
+Route::patch('autores/{autor}','AutoresController@atualizar');
+
+
+
+
+
+
+
+
+
+
+
