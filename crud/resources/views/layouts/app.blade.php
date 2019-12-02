@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CRUD LIVRARIA') }}</title>
+    <title>Crud Livraria</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'CRUD LIVRARIA') }}
+                    CRUD LIVRARIA
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,9 @@
                     <ul class="navbar-nav mr-auto">
                     @if(!Auth::guest())
                         <li><a class="nav-link" href="{{ url('/autores')}}">Autores</a></li>
+                        <li><a class="nav-link" href="{{ url('/editoras')}}">Editoras</a></li>
+                        <li><a class="nav-link" href="{{ url('/generos')}}">Generos</a></li>
+                        <li><a class="nav-link" href="{{ url('/livros')}}">Livros</a></li>
                     @endif
                     </ul>
 
