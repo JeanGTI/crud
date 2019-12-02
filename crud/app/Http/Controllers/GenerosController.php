@@ -28,20 +28,20 @@ class GenerosController extends Controller
 
         public function atualizar($id, Request $request)
         {
-            $genero = Autore::findOrFail($id);
+            $genero = Genero::findOrFail($id);
             $genero->update($request->all());
-            \Session::flash('mensagem_sucesso','Autor atualizado com sucesso!');
-            return Redirect::to ('autores/'.$genero->id.'/editar');
+            \Session::flash('mensagem_sucesso','Genero atualizado com sucesso!');
+            return Redirect::to ('generos/'.$genero->id.'/editar');
             
 
         }
 
         public function deletar($id, Request $request)
         {
-            $genero = Autore::findOrFail($id);
+            $genero = Genero::findOrFail($id);
             $genero->delete();
-            \Session::flash('mensagem_sucesso','Autor excluido com sucesso!');
-            return Redirect::to ('autores');
+            \Session::flash('mensagem_sucesso','Genero excluido com sucesso!');
+            return Redirect::to ('generos');
 
         }
 
