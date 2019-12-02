@@ -11,6 +11,9 @@
 
                 <div class="card-block">
                     <table class= "table">
+                    @if(Session::has('mensagem_sucesso'))
+                    <div class = "alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
+                    @endif
                         <th>Nome</th>
                         <th>Nacionalidade</th>
                         <th>Data de nascimento</th>
@@ -25,7 +28,9 @@
                                         <td>{{$autor->sexo}}</td>
                                         <td>
                                         <a href="autores/{{$autor->id}}/editar" class="btn btn-secondary">Editar</a>
-                                        <a href="autores/{{$autor->id}}/excluir" class="btn btn-secondary">Excluir</a>
+                                        {{ Form::open(['method'=>'DELETE','url' => 'autores/'.$autor->id, 'style'=>'display: inline;']) }}
+                                        <button type="submit" class="btn btn-secondary" >Excluir</button>
+                                        {{ Form::close() }}
                                         </td>
                                     </tr>
                                 @endforeach

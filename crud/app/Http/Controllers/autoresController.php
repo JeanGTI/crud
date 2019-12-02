@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Autore;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AutoresController extends Controller
 {
@@ -16,7 +17,7 @@ class AutoresController extends Controller
         public function salvar(Request $request) {
             $autor = new Autore();
             $autor = $autor->create($request->all());
-            \Session::flash('mensagem_sucesso','Cliente cadastrado com sucesso!');
+            \Session::flash('mensagem_sucesso','Autor cadastrado com sucesso!');
             return view('novo-autores');
         }
         public function editar($id)
@@ -29,7 +30,19 @@ class AutoresController extends Controller
         {
             $autor = Autore::findOrFail($id);
             $autor->update($request->all());
-            return view ('novo-autores',['autor' => $autor]);
+            \Session::flash('mensagem_sucesso','Autor atualizado com sucesso!');
+            return Redirect::to ('autores/'.$autor->id.'/editar');
+            
+
+        }
+
+        public function deletar($id, Request $request)
+        {
+            $autor = Autore::findOrFail($id);
+            $autor->delete();
+            \Session::flash('mensagem_sucesso','Autor excluido com sucesso!');
+            return Redirect::to ('autores');
+
         }
 
 }

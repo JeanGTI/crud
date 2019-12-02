@@ -13,10 +13,10 @@
 
                 @if(Session::has('mensagem_sucesso'))
                     <div class = "alert alert-success">{{Session::get('mensagem_sucesso')}}</div>
-                @endif
+                @endif              
 
                 @if(Request::is('*/editar'))
-                    {{ Form::model($autor, ['method'=>'PATCH','url'=>'autores'.$autor->id])}}
+                    {{ Form::model($autor, ['method'=>'PATCH','url'=>'autores/'.$autor->id])}}
                 @else                
                 {{ Form::open(['url' => 'autores/salvar']) }}
                 @endif
