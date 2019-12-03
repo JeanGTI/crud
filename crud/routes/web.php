@@ -43,18 +43,8 @@ Route::patch('generos/{genero}','GenerosController@atualizar');
 Route::delete('generos/{genero}','GenerosController@deletar');
 
 Route::get('livros','LivrosController@index');
-Route::get('livros/novo','LivrosController@novo');
+Route::get('livros/novo','LivrosController@cadastrar');
 Route::get('livros/{livro}/editar','LivrosController@editar');
 Route::post('livros/salvar','LivrosController@salvar');
 Route::patch('livros/{livro}','LivrosController@atualizar');
 Route::delete('livros/{livro}','LivrosController@deletar');
-
-
-
-
-
-
-
-
-
-

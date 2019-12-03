@@ -9,4 +9,9 @@ class Editora extends Model
     protected $fillable = [
         'nome'
     ];
+    public function livro(){
+
+        return $this ->hasMany(Livros::class,'id');
+       
+    }
 }

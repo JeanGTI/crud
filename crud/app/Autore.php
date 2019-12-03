@@ -12,4 +12,9 @@ class Autore extends Model
         'ano_nascimento',
         'sexo'
     ];
+    public function livro(){
+
+        return $this ->hasMany(Livro::class,'id');
+       
+    }
 }
