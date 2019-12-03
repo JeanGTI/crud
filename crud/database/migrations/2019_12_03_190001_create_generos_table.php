@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UsuariosTable extends Migration
+class CreateGenerosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class UsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('users',function (Blueprint $table){
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password',10);
-            $table->remenberToken();
-            $table->timesstamps();
+        Schema::create('generos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nome',30);
+            $table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ class UsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('generos');
     }
 }

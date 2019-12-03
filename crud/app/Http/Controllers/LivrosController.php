@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\livros;
+use App\Livro;
 use App\Generos;
 use App\Editora;
 use App\Autore;
@@ -12,12 +12,12 @@ class LivrosController extends Controller
 {
 
     public function index(){
-        $livro = Livros::get();
-        return view('list-livros',['livros'=> $livro]);
+        $livro = Livro::get();
+        return view('list-Livros',['livro'=> $livro]);
     }
     
-    //public function livros(){
-    //    $livro = Livros::find(1);
+    //public function Livro(){
+    //    $livro = Livro::find(1);
     //   $generos = $livro->generos;
     //    echo '<h3>'.($livro->titulo).'</h3>';
 //
@@ -29,13 +29,13 @@ class LivrosController extends Controller
    // }
     
     //public function novo(){
-    //    return view('novo-livros');
+    //    return view('novo-Livro');
     
         public function salvar(Request $request) {
-            $livro = new Livros();
+            $livro = new Livro();
             $livro = $livro->create($request->all());
             \Session::flash('mensagem_sucesso','Livro cadastrado com sucesso!');
-            return Redirect::to ('livros');
+            return Redirect::to ('livro');
         }
 
         public function cadastrar() {
@@ -43,25 +43,25 @@ class LivrosController extends Controller
             $genero = Generos::pluck('nome', 'id');
             $editora = Editora::pluck('nome', 'id');
     
-            return view('novo-livros',compact('autor','genero','editora'));
+            return view('novo-Livro',compact('autor','genero','editora'));
         }
 
         public function editar($id)
         {
-            $livro = Livros::findOrFail($id);
+            $livro = Livro::findOrFail($id);
             $autor = Autore::pluck('nome', 'id');
             $genero = Generos::pluck('nome', 'id');
             $editora = Editora::pluck('nome', 'id');
-            return view ('novo-livros',compact('livro','autor','genero','editora'));
+            return view ('novo-livro',compact('livro','autor','genero','editora'));
             //['livro' => $livro]
         }
 
         public function atualizar($id, Request $request)
         {
-            $livro = Livros::findOrFail($id);
+            $livro = Livro::findOrFail($id);
             $livro->update($request->all());
             \Session::flash('mensagem_sucesso','Livro atualizado com sucesso!');
-            return Redirect::to ('livros/'.$livro->id.'/editar');
+            return Redirect::to ('livro/'.$livro->id.'/editar');
             
 
         }
@@ -71,7 +71,7 @@ class LivrosController extends Controller
             $livro = Livro::findOrFail($id);
             $livro->delete();
             \Session::flash('mensagem_sucesso','Livro excluido com sucesso!');
-            return Redirect::to ('livros');
+            return Redirect::to ('livro');
 
         }
     

@@ -14,7 +14,9 @@ class Generos extends Model
     ];
 
     public function livros(){
-        return $this->belongsToMany('App\Livros','livrosgeneros','generos_id','livros_id');
+
+        return $this ->hasMany(Livros::class,'generos_id');
+       
     }
     
 }

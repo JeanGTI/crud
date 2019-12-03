@@ -21,14 +21,14 @@
                         <th>Editora</th>
                         <th>Ações</th>
                             <tbody>
-                            @foreach($livros as $livro)
+                            @foreach($livro as $livro)
                                     <tr>
-                            @foreach($livros -> autores as $autor)
-                            @foreach($livros -> editoras as $editora)
-                            @foreach($livros -> generos as $genero)
+                            @foreach($livro -> autores as $autor)
+                            @foreach($livro -> editoras as $editora)
+                            @foreach($livro -> generos as $genero)
                                         <td>{{$livro->titulo}}</td>
                                         <td>{{$livro->ano_lancamento}}</td>  
-                                        <td>{{$autores -> nome}}</td> 
+                                        <td>{{$autor -> nome}}</td> 
                                         <td>{{$genero -> nome}}</td>
                                         <td>{{$editora -> nome }}</td>                  
                                            
