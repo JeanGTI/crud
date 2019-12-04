@@ -35,7 +35,7 @@ class LivrosController extends Controller
             $livro = new Livro();
             $livro = $livro->create($request->all());
             \Session::flash('mensagem_sucesso','Livro cadastrado com sucesso!');
-            return Redirect::to ('livro');
+            return Redirect::to ('livros');
         }
 
         public function cadastrar() {
@@ -43,7 +43,7 @@ class LivrosController extends Controller
             $genero = Generos::pluck('nome', 'id');
             $editora = Editora::pluck('nome', 'id');
     
-            return view('novo-Livro',compact('autor','genero','editora'));
+            return view('novo-Livros',compact('autor','genero','editora'));
         }
 
         public function editar($id)
@@ -52,7 +52,7 @@ class LivrosController extends Controller
             $autor = Autore::pluck('nome', 'id');
             $genero = Generos::pluck('nome', 'id');
             $editora = Editora::pluck('nome', 'id');
-            return view ('novo-livro',compact('livro','autor','genero','editora'));
+            return view ('novo-livros',compact('livro','autor','genero','editora'));
             //['livro' => $livro]
         }
 
